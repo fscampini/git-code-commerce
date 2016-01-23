@@ -18,24 +18,24 @@ Route::get('/', function () {
 Route::pattern('id', '[0-9]+');
 
 Route::group(['prefix'=> 'admin'], function(){
-    Route::get('products/{id?}', ['as'=>'products', function($id = null){
+    Route::match(['get','post','put','delete'],'products/{id?}', ['as'=>'products', 'uses'=>'AdminProductsController@index', function($id = null){
         // Mostrando a URL completa da Rota:
         //return route('products');
 
-        if($id) {
-            //return "Olá $id";
-            return Redirect::action('WelcomeController@exemplo');
-        }
+        if($id)
+            return "Olá $id";
+
+        return "URL não encontrada.";
     }]);
 
-    Route::get('categories/{id?}', ['as'=>'categories', function($id = null){
+    Route::match(['get','post','put','delete'],'categories/{id?}', ['as'=>'categories', 'uses'=>'AdminCategoriesController@index', function($id = null){
         // Mostrando a URL completa da Rota:
         //return route('categories');
 
-        if($id) {
+        if($id)
             //return "Olá $id";
-            return Redirect::action('WelcomeController@exemplo');
-        }
+
+        return "URL não encontrada.";
     }]);
 });
 
