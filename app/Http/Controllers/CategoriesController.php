@@ -38,6 +38,22 @@ class CategoriesController extends Controller
         return redirect()->route('categories');
     }
 
+    public function edit($id)
+    {
+        $category = $this->categoryModel->find($id);
+
+        return view('categories.edit', compact('category'));
+
+        return redirect()->route('categories');
+    }
+
+    public function update(Requests\CategoryRequest $request, $id)
+    {
+        $this->categoryModel->find($id)->update($request->all());
+
+        return redirect()->route('categories');
+    }
+
     public function destroy($id)
     {
         $this->categoryModel->find($id)->delete();
