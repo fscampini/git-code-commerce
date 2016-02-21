@@ -5,6 +5,7 @@
  * User: root
  * Date: 09/02/16
  * Time: 10:07
+ * Scampini
  */
 
 use Illuminate\Database\Seeder;
