@@ -15,7 +15,17 @@
         @endif
 
 
-        {!! Form::open(['route'=>'products.store']) !!}
+        {!! Form::open(['route'=>'products.store', 'method'=>'post']) !!}
+
+
+        <!-- Categories Form Input -->
+
+        <div class="form-group">
+
+            {!! Form::label('category', 'Category:') !!}
+            {!! Form::select('category_id', $categories, null, ['class'=>'form-control']) !!}
+
+        </div>
 
         <!-- Name Form Input -->
 
@@ -49,18 +59,17 @@
         <div class="form-group">
 
             {!! Form::label('featured', 'Featured:') !!}
-            {!! Form::hidden('featured', false) !!}
-            {!! Form::checkbox('featured', true, ['class'=>'form-control']) !!}
+            {!! Form::hidden('featured', 0) !!}
+            {!! Form::checkbox('featured', 1, ['class'=>'form-control']) !!}
 
-        </div>
 
         <!-- Recommend Form Input -->
 
-        <div class="form-group">
+            &nbsp;&nbsp;
 
             {!! Form::label('recommend', 'Recommend:') !!}
-            {!! Form::hidden('recommend', false) !!}
-            {!! Form::checkbox('recommend', true, ['class'=>'form-control']) !!}
+            {!! Form::hidden('recommend', 0) !!}
+            {!! Form::checkbox('recommend', 1, ['class'=>'form-control']) !!}
 
          </div>
 

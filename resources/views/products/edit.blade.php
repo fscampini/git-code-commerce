@@ -17,6 +17,15 @@
 
         {!! Form::open(['route'=> ['products.update', $product->id], 'method'=>'put']) !!}
 
+        <!-- Categories Form Input -->
+
+        <div class="form-group">
+
+            {!! Form::label('category', 'Category:') !!}
+            {!! Form::select('category_id', $categories, $product->category->id, ['class'=>'form-control']) !!}
+
+        </div>
+
         <!-- Name Form Input -->
 
         <div class="form-group">
@@ -44,24 +53,23 @@
 
         </div>
 
-        <!-- Featured Form Input -->
+
 
         <div class="form-group">
+
+            <!-- Featured Form Input -->
 
             {!! Form::label('featured', 'Featured:') !!}
-            {!! Form::hidden('featured', false) !!}
-            {!! Form::checkbox('featured', null, $product->featured) !!}
+            {!! Form::hidden('featured', 0) !!}
+            {!! Form::checkbox('featured', 1, $product->featured) !!}
 
-        </div>
 
-        <!-- Recommend Form Input -->
-
-        <div class="form-group">
-
+            <!-- Recommend Form Input -->
+            &nbsp;&nbsp;
 
             {!! Form::label('recommend', 'Recommend:') !!}
-            {!! Form::hidden('recommend', false) !!}
-            {!! Form::checkbox('recommend', null, $product->recommend) !!}
+            {!! Form::hidden('recommend', 0) !!}
+            {!! Form::checkbox('recommend', 1, $product->recommend) !!}
 
         </div>
 
