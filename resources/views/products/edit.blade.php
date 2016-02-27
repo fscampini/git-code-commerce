@@ -44,6 +44,15 @@
 
         </div>
 
+        <!-- Tags Form Input -->
+
+        <div class="form-group">
+
+            {!! Form::label('tags', 'Tags:') !!}
+            {!! Form::textarea('tags', implode(',',$product->tags->lists('name')->toArray()), ['class'=>'form-control']) !!}
+
+        </div>
+
         <!-- Price Form Input -->
 
         <div class="form-group">

@@ -4,8 +4,8 @@ namespace CodeCommerce\Http\Controllers;
 
 use CodeCommerce\Category;
 use CodeCommerce\Product;
+use CodeCommerce\Tag;
 use CodeCommerce\ProductImage;
-use Illuminate\Http\Request;
 use CodeCommerce\Http\Requests;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -38,8 +38,11 @@ class ProductsController extends Controller
         $input = $request->all();
 
         $product = $this->productModel->fill($input);
-
         $product->save();
+
+        // Chama o método Private storeTag
+        $this->storeTag($request->get('tags'), $product->id);
+        // ------- Fim -------
 
         return redirect()->route('products');
     }
@@ -58,6 +61,10 @@ class ProductsController extends Controller
     public function update(Requests\CategoryRequest $request, $id)
     {
         $this->productModel->find($id)->update($request->all());
+
+        // Chama o método Private storeTag
+        $this->storeTag($request->get('tags'), $id);
+        // ------- Fim -------
 
         return redirect()->route('products');
     }
@@ -108,6 +115,21 @@ class ProductsController extends Controller
         $image->delete();
 
         return redirect()->route('products.images', ['id'=> $product->id]);
+    }
+
+    private function storeTag($inputTags, $id)
+    {
+        $tagsIDs = array_map
+        (
+            function($tagName)
+            {
+                return Tag::firstOrCreate(['name' => strtoupper(trim($tagName))])->id;
+            },
+            explode(',',$inputTags)
+        );
+
+        $product = $this->productModel->find($id);
+        $product->tags()->sync($tagsIDs);
     }
 
 }

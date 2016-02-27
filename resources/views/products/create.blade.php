@@ -45,6 +45,15 @@
 
         </div>
 
+        <!-- Tags Form Input -->
+
+        <div class="form-group">
+
+            {!! Form::label('tags', 'Tags:') !!}
+            {!! Form::textarea('tags', null, ['class'=>'form-control']) !!}
+
+        </div>
+
         <!-- Price Form Input -->
 
         <div class="form-group">
