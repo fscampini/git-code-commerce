@@ -9,17 +9,7 @@
     <title>Home | E-Shop</title>
 
 
-<<<<<<< HEAD
     <link href="{{ elixir('css/all.css') }}" rel="stylesheet">
-
-=======
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
->>>>>>> b05c7bd07d6e414143125e25cc779631aaee1b83
 
 
 </head><!--/head-->
@@ -136,12 +126,6 @@
 
 <footer id="footer"><!--Footer-->
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> b05c7bd07d6e414143125e25cc779631aaee1b83
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
@@ -154,17 +138,8 @@
 </footer><!--/Footer-->
 
 
-
-<<<<<<< HEAD
 <script src="{{ elixir('js/all.js') }}"></script>
 
-=======
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/main.js"></script>
->>>>>>> b05c7bd07d6e414143125e25cc779631aaee1b83
 
 </body>
 </html>
