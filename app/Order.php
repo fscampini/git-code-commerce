@@ -23,4 +23,19 @@ class Order extends Model
         return $this->belongsTo('CodeCommerce\User');
     }
 
+    public function getStatus()
+    {
+        switch ($this->attributes['status'])
+        {
+            case 0:
+                return 'Aguardando Pagamento/Pendente';
+                break;
+            case 1:
+                return 'Produto Enviado';
+                break;
+            case 2:
+                return 'Cancelado';
+                break;
+        }
+    }
 }

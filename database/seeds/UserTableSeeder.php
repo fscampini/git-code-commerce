@@ -25,6 +25,9 @@ class UserTableSeeder extends Seeder
                 'name'=> 'fscampini',
                 'email' => 'fscampini@gmail.com',
                 'password' => Hash::make(123456),
+                'street' => 'Estrada de Camorim',
+                'city' => 'Rio de Janeiro',
+                'country' => 'Brasil',
                 'is_admin' => true
             ]
         );

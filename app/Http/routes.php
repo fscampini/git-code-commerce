@@ -33,6 +33,7 @@ Route::get('user/{id?}', function($id = null){
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('checkout/placeOrder', ['as' => 'checkout.place', 'uses' => 'CheckoutController@place']);
+    Route::get('account/orders', ['as' => 'account.orders', 'uses' => 'AccountController@orders']);
 
     Route::group(['prefix'=>'admin', 'middleware' => 'admin', 'where' => ['id'=> '[0-9]+']], function()
     {
@@ -47,6 +48,13 @@ Route::group(['middleware' => 'auth'], function()
             Route::get('{id}/destroy',['as'=> 'categories.destroy', 'uses'=> 'CategoriesController@destroy']);
             Route::get('{id}/edit',['as'=> 'categories.edit', 'uses'=> 'CategoriesController@edit']);
             Route::put('{id}/update',['as'=> 'categories.update', 'uses'=> 'CategoriesController@update']);
+
+        });
+
+        Route::group(['prefix'=>'orders'], function()
+        {
+            Route::get('',['as'=>'orders.all', 'uses'=>'AccountController@all']);
+            Route::get('{id}/{status}/update',['as'=>'categories', 'uses'=>'AccountController@update_status']);
 
         });
 
@@ -85,7 +93,6 @@ Route::get('cart', ['as' => 'cart', 'uses' => 'CartController@index']);
 Route::get('cart/add/{id}', ['as' => 'cart.add', 'uses' => 'CartController@add']);
 Route::get('cart/destroy/{id}', ['as' => 'cart.destroy', 'uses' => 'CartController@destroy']);
 Route::get('cart/update/{id}/{qtd}', ['as' => 'cart.update', 'uses' => 'CartController@update']);
-
 
 
 
