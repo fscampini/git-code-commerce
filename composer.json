@@ -10,7 +10,8 @@
         "bestmomo/scafold": "dev-master",
         "illuminate/html": "^5.0",
         "fzaninotto/faker": "^1.5",
-        "guzzlehttp/guzzle": "~5.3|~6.0"
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "wesleywillians/laravel-pagseguro": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
@@ -50,5 +51,6 @@
     },
     "config": {
         "preferred-install": "dist"
-    }
+    },
+    "minimum-stability": "dev"
 }

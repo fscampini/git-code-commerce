@@ -48,4 +48,9 @@ class AccountController extends Controller
         }
     }
 
+    public function update_status_ps(Request $request)
+    {
+        dd($request);
+    }
+
 }

@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function()
 {
     Route::get('checkout/placeOrder', ['as' => 'checkout.place', 'uses' => 'CheckoutController@place']);
     Route::get('account/orders', ['as' => 'account.orders', 'uses' => 'AccountController@orders']);
+    Route::get('ps_code',['as'=>'orders.update_status', 'uses'=>'AccountController@update_status_ps']);
 
     Route::group(['prefix'=>'admin', 'middleware' => 'admin', 'where' => ['id'=> '[0-9]+']], function()
     {
@@ -54,8 +55,7 @@ Route::group(['middleware' => 'auth'], function()
         Route::group(['prefix'=>'orders'], function()
         {
             Route::get('',['as'=>'orders.all', 'uses'=>'AccountController@all']);
-            Route::get('{id}/{status}/update',['as'=>'categories', 'uses'=>'AccountController@update_status']);
-
+            Route::get('{id}/{status}/update',['as'=>'orders.update_status', 'uses'=>'AccountController@update_status']);
         });
 
         Route::group(['prefix'=>'products'], function()
@@ -94,7 +94,8 @@ Route::get('cart/add/{id}', ['as' => 'cart.add', 'uses' => 'CartController@add']
 Route::get('cart/destroy/{id}', ['as' => 'cart.destroy', 'uses' => 'CartController@destroy']);
 Route::get('cart/update/{id}/{qtd}', ['as' => 'cart.update', 'uses' => 'CartController@update']);
 
-
+Route::get('test', 'CheckoutController@test');
+Route::get('codigo', 'CheckoutController@test_search');
 
 // ***************************************
 // Exemplos
