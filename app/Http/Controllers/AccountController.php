@@ -6,8 +6,9 @@ use CodeCommerce\Order;
 use Illuminate\Http\Request;
 
 use CodeCommerce\Http\Requests;
-use CodeCommerce\Http\Controllers\Controller;
+use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use PHPSC\PagSeguro\Purchases\Transactions\Locator;
 
 class AccountController extends Controller
 {
@@ -48,9 +49,20 @@ class AccountController extends Controller
         }
     }
 
-    public function update_status_ps(Request $request)
+    public function update_status_ps(Locator $locator, Request $request)
     {
-        dd($request);
+
+        $transaction_code = $request->get('ps_code');
+        $transaction = $locator->getByCode($transaction_code);
+        $orderId = $transaction->getDetails()->getReference();
+        $status = $transaction->getDetails()->getStatus();
+
+        $order = Order::find($orderId);
+        $order->status = $status;
+        $order->save();
+
+        $orders = Order::all();
+        return view('store.all_orders', compact('orders'));
     }
 
 }

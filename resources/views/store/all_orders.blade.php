@@ -30,7 +30,7 @@
                     <!--{{$order->getStatus()}}-->
                     <select class="status" id="status{{$order->id}}">
                         <option value="0">Aguardando Pagamento/Pendente</option>
-                        <option value="1">Produto Enviado</option>
+                        <option value="1">Aprovado PagSeguro</option>
                         <option value="2">Cancelado</option>
                     </select>
                 </td>

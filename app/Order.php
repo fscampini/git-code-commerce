@@ -32,7 +32,7 @@ class Order extends Model
                 return 'Aguardando Pagamento/Pendente';
                 break;
             case 1:
-                return 'Produto Enviado';
+                return 'Aprovado PagSeguro';
                 break;
             case 2:
                 return 'Cancelado';
